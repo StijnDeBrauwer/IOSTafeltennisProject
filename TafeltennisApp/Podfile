@@ -1,0 +1,21 @@
+
+platform :ios, '11.0'
+
+target 'TafeltennisApp' do
+  use_frameworks!
+
+pod 'Charts'
+pod 'KituraKit', :git => 'https://github.com/IBM-Swift/KituraKit.git', :branch => 'pod'
+  # Pods for TafeltennisApp
+
+  target 'TafeltennisAppTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'TafeltennisAppUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

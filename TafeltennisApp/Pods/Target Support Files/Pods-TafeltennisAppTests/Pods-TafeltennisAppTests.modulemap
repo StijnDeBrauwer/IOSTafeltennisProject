@@ -1,0 +1,6 @@
+framework module Pods_TafeltennisAppTests {
+  umbrella header "Pods-TafeltennisAppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
