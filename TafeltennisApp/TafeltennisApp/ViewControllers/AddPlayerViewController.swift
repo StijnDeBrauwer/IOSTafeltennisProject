@@ -43,9 +43,11 @@ class AddPlayerViewController: UITableViewController {
             countrynameTextField.text = player.country
             debutYear.text = "\(player.debutYear)"
             
+            sexPicker.isUserInteractionEnabled = false
+            
             
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd/MM/YYYY"
+            dateFormatter.dateFormat = "dd/MM/yyyy"
             let newDate = dateFormatter.date(from: player.birthdate)
             datePicker.date = newDate!
             
@@ -121,8 +123,8 @@ class AddPlayerViewController: UITableViewController {
         //convert the date to string
         let dateFormatter = DateFormatter()
         
-        dateFormatter.setLocalizedDateFormatFromTemplate("nl_NL")
-        dateFormatter.dateFormat = "dd/MM/YYYY"
+        //dateFormatter.setLocalizedDateFormatFromTemplate("nl_NL")
+        dateFormatter.dateFormat = "dd/MM/yyyy"
         
         return dateFormatter.string(from: date)
     }

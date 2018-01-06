@@ -25,7 +25,7 @@ class PlayerDetailViewController: UITableViewController {
            let now = Date()
             
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd/MM/YYYY"
+            dateFormatter.dateFormat = "dd/MM/yyyy"
             let stringPlayer = player.birthdate
             let date = dateFormatter.date(from: stringPlayer)
             

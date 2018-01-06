@@ -36,6 +36,17 @@ class RankingViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        KituraService.shared.getSeries {
+            if let series = $0 {
+                self.series = series
+                self.currentRanking = self.series[0].players
+                self.currentList = self.currentRanking
+                self.rankingTable.reloadData()
+            }
+        }
+    }
+    
     /*func initPlayers()  {
         //Men
         //  dates

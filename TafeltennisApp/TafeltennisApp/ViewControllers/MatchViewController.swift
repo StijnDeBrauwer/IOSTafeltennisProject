@@ -17,6 +17,16 @@ class MatchViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        KituraService.shared.getSerie(withName: serie!.name) {
+            if let serie = $0 {
+                self.serie = serie
+                self.currentMatches = serie.matches
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     @IBAction func reloadSerie() {
         if let serie = serie {
             KituraService.shared.getSerie(withName: serie.name) {

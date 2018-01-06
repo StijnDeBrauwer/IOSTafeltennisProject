@@ -17,6 +17,15 @@ class SerieViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        KituraService.shared.getSeries {
+            if let series = $0 {
+                self.series = series
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     @IBAction func refreshData() {
         KituraService.shared.getSeries {
             if let series = $0 {
@@ -79,6 +88,7 @@ class SerieViewController: UIViewController {
     
     
 }
+
 
 extension SerieViewController: UITableViewDataSource {
     

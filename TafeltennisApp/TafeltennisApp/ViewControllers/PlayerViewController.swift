@@ -28,6 +28,18 @@ class PlayerViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        KituraService.shared.getSeries {
+            if let series = $0 {
+                self.series = series
+                self.series.forEach{serie in serie.players.forEach{player in self.players.append(player)}}
+                self.currentIndexSerie = 0
+                self.currentPlayers = self.series[0].players
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     @IBAction func refreshData() {
         KituraService.shared.getSeries {
             if let series = $0 {
@@ -117,7 +129,7 @@ class PlayerViewController: UIViewController {
            
         case "didEditPlayer"?:
             let addPlayerViewController = segue.source as! AddPlayerViewController
-            series[currentIndexSerie].playerDeleteMatches(oldplayer: addPlayerViewController.oldPlayer!)
+            series[currentIndexSerie].changeMatchesWithNewPlayer(oldplayer: addPlayerViewController.oldPlayer!, newplayer: addPlayerViewController.player!)
             KituraService.shared.updateSerie(withName: series[currentIndexSerie].name, to: series[currentIndexSerie])
             tableView.reloadRows(at: [indexPathToEdit], with: .automatic)
         default:

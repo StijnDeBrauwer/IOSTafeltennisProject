@@ -49,7 +49,7 @@ override func viewDidLoad() {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/YYYY"
+        dateFormatter.dateFormat = "dd/MM/yyyy"
         let date = dateFormatter.string(from: datePicker.date)
         
         switch segue.identifier {

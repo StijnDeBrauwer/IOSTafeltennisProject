@@ -33,8 +33,15 @@ class Serie: Codable {
         }
     }
     //Bij het wijzigen van een speler zal de matchen van deze speler ook veranderen
-    func playerDeleteMatches(oldplayer: Player){
-        matches = matches.filter({$0.playerA != oldplayer || $0.playerB != oldplayer})
+    func changeMatchesWithNewPlayer(oldplayer: Player, newplayer: Player){
+    matches.forEach {
+            if($0.playerA == oldplayer){
+                $0.playerA = newplayer
+            }else if ($0.playerB == oldplayer){
+                $0.playerB = newplayer
+            }
+            
+        }
     }
     
     func getRankingPlayer(selectedPlayer: Player) -> Int{
