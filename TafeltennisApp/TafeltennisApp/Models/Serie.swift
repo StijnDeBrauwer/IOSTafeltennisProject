@@ -44,6 +44,22 @@ class Serie: Codable {
         }
     }
     
+    // set ranking score back of winner in case the match was deleted
+    func setRankingScoreBack(deletedPlayer: Player) {
+        let oldmatches = matches.filter({$0.playerA == deletedPlayer || $0.playerB == deletedPlayer})
+        
+        oldmatches.forEach({if($0.getWinner() != deletedPlayer){
+            let otherPlayer = $0.playerA == deletedPlayer ? $0.playerB : $0.playerA
+            let index = players.index(of: otherPlayer)
+            if(players[index!].rankingScore > 0){
+                players[index!].rankingScore-=1
+                }
+            }
+            
+        })
+    }
+    
+    //get the ranking of a player to display (starts from 1)
     func getRankingPlayer(selectedPlayer: Player) -> Int{
         //filter en map
         let index = players.index(where: {$0 == selectedPlayer})

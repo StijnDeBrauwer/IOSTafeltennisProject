@@ -9,93 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TafeltennisApp/ViewControllers/PlayerViewController.swift"
-            timestampString = "536977615.440782"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "unwindFromAddPlayer(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TafeltennisApp/ViewControllers/PlayerViewController.swift"
-            timestampString = "536977615.440855"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "unwindFromAddPlayer(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TafeltennisApp/ViewControllers/PlayerViewController.swift"
-            timestampString = "536977615.44091"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
-            landmarkName = "unwindFromAddPlayer(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TafeltennisApp.PlayerViewController.unwindFromAddPlayer(__ObjC.UIStoryboardSegue) -&gt; ()"
-                  moduleName = "TafeltennisApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac/Documents/School/IOSProject/TafeltennisApp/TafeltennisApp/ViewControllers/PlayerViewController.swift"
-                  timestampString = "536977615.557801"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "133"
-                  endingLineNumber = "133"
-                  offsetFromSymbolStart = "7132">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TafeltennisApp.PlayerViewController.unwindFromAddPlayer(__ObjC.UIStoryboardSegue) -&gt; ()"
-                  moduleName = "TafeltennisApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac/Documents/School/IOSProject/TafeltennisApp/TafeltennisApp/ViewControllers/PlayerViewController.swift"
-                  timestampString = "536977615.559958"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "133"
-                  endingLineNumber = "133"
-                  offsetFromSymbolStart = "7741">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "TafeltennisApp/Models/Serie.swift"
-            timestampString = "536977615.440962"
+            timestampString = "537007973.8476371"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "changeMatchesWithNewPlayer(oldplayer:newplayer:)"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "setRankingScoreBack(deletedPlayer:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -106,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TafeltennisApp/Models/Serie.swift"
-            timestampString = "536977615.441011"
+            timestampString = "537007973.847756"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "changeMatchesWithNewPlayer(oldplayer:newplayer:)"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "setRankingScoreBack(deletedPlayer:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -122,12 +42,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TafeltennisApp/Models/Serie.swift"
-            timestampString = "536977615.441058"
+            timestampString = "537007973.847838"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "changeMatchesWithNewPlayer(oldplayer:newplayer:)"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "setRankingScoreBack(deletedPlayer:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TafeltennisApp/Models/Serie.swift"
+            timestampString = "537007973.847899"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "setRankingScoreBack(deletedPlayer:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

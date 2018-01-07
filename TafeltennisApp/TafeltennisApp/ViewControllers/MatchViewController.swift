@@ -27,19 +27,6 @@ class MatchViewController: UIViewController {
         }
     }
     
-    @IBAction func reloadSerie() {
-        if let serie = serie {
-            KituraService.shared.getSerie(withName: serie.name) {
-                if let serie = $0 {
-                    self.serie = serie
-                    self.tableView.reloadData()
-                }
-            }
-        }
-       
-    }
-    
-  
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch  segue.identifier {

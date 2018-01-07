@@ -39,15 +39,6 @@ class PlayerViewController: UIViewController {
         }
     }
     
-    @IBAction func refreshData() {
-        KituraService.shared.getSeries {
-            if let series = $0 {
-                self.series = series
-                self.tableView.reloadData()
-            }
-        }
-    }
-    
     
    /* func addDummyData() {
         //series
@@ -167,12 +158,19 @@ extension PlayerViewController: UITableViewDelegate {
             
             //delete the real player at the right index in series.player
             let deletedPlayer = self.series[self.currentIndexSerie].players.remove(at:index!)
-            //delete every match from the player
+         
+            //set ranking score back if the winner was not the deleted player
+            self.series[self.currentIndexSerie].setRankingScoreBack(deletedPlayer: deletedPlayer)
+            
+            //delete every match from the deletedplayer
             let newMatches = self.series[self.currentIndexSerie].matches.filter({$0.playerA != deletedPlayer && $0.playerB != deletedPlayer})
             
              self.series[self.currentIndexSerie].matches = newMatches
             
             KituraService.shared.updateSerie(withName: self.series[self.currentIndexSerie].name, to: self.series[self.currentIndexSerie])
+            
+            
+            // set ranking back of winner matches
             
             tableView.deleteRows(at: [indexPath], with: .automatic)
             completionHandler(true)

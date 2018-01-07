@@ -8,7 +8,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,7 +33,7 @@
                                     </connections>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="newsCell" textLabel="7nN-5E-aOX" detailTextLabel="gnb-cq-Bja" rowHeight="46" style="IBUITableViewCellStyleSubtitle" id="fof-Ge-JE7" customClass="NewsCell" customModule="TafeltennisApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="newsCell" textLabel="7nN-5E-aOX" detailTextLabel="gnb-cq-Bja" rowHeight="46" style="IBUITableViewCellStyleSubtitle" id="fof-Ge-JE7" customClass="NewsCell" customModule="TafeltennisApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="84" width="414" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fof-Ge-JE7" id="lVe-8Z-x1G">
@@ -286,7 +285,7 @@
                                     </connections>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="playerCell" textLabel="S5S-QO-Ya5" detailTextLabel="Xen-8v-gin" rowHeight="46" style="IBUITableViewCellStyleValue1" id="6qI-Ml-GOi" customClass="PlayerCell" customModule="TafeltennisApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="playerCell" textLabel="S5S-QO-Ya5" detailTextLabel="Xen-8v-gin" rowHeight="46" style="IBUITableViewCellStyleValue1" id="6qI-Ml-GOi" customClass="PlayerCell" customModule="TafeltennisApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="84" width="414" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6qI-Ml-GOi" id="rLL-XL-gbl">
@@ -333,18 +332,11 @@
                         <viewLayoutGuide key="safeArea" id="gDL-7j-i4u"/>
                     </view>
                     <navigationItem key="navigationItem" title="Players" id="0QR-Qa-skg">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="RQg-g3-lJi">
-                                <connections>
-                                    <segue destination="ch3-DP-hEX" kind="show" identifier="addPlayer" id="vOc-nN-TKJ"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="refresh" id="Blz-uL-8sn">
-                                <connections>
-                                    <action selector="refreshData" destination="awY-ms-3d1" id="ebP-Fb-MZb"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="RQg-g3-lJi">
+                            <connections>
+                                <segue destination="ch3-DP-hEX" kind="show" identifier="addPlayer" id="vOc-nN-TKJ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="RQg-g3-lJi" id="Yvc-uu-ag0"/>
@@ -797,7 +789,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="serieCell" textLabel="EGs-8k-1uH" rowHeight="44" style="IBUITableViewCellStyleDefault" id="vPQ-1m-49i" customClass="SerieCell" customModule="TafeltennisApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="serieCell" textLabel="EGs-8k-1uH" rowHeight="44" style="IBUITableViewCellStyleDefault" id="vPQ-1m-49i" customClass="SerieCell" customModule="TafeltennisApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vPQ-1m-49i" id="b5W-bd-pYY">
@@ -863,7 +855,7 @@
                                     </connections>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="matchCell" textLabel="xMF-pL-rDN" detailTextLabel="Ax6-lw-aHl" rowHeight="46" style="IBUITableViewCellStyleValue1" id="PPT-gk-L7D" customClass="MatchCell" customModule="TafeltennisApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="matchCell" textLabel="xMF-pL-rDN" detailTextLabel="Ax6-lw-aHl" rowHeight="46" style="IBUITableViewCellStyleValue1" id="PPT-gk-L7D" customClass="MatchCell" customModule="TafeltennisApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="99.333333333333343" width="414" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PPT-gk-L7D" id="Fuu-Fh-x9h">
@@ -909,18 +901,11 @@
                         <viewLayoutGuide key="safeArea" id="cQb-9O-vcz"/>
                     </view>
                     <navigationItem key="navigationItem" title="Matches" id="jUF-3Z-rNh">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="GFb-de-Lzk">
-                                <connections>
-                                    <segue destination="14T-ks-7r0" kind="show" identifier="addMatch" id="TvV-6s-fBh"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="refresh" id="wPk-bh-crw">
-                                <connections>
-                                    <action selector="reloadSerie" destination="NoQ-58-ILa" id="EGt-tH-5zT"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="GFb-de-Lzk">
+                            <connections>
+                                <segue destination="14T-ks-7r0" kind="show" identifier="addMatch" id="TvV-6s-fBh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="xwN-8m-c7s" id="cyb-2w-Og9"/>
@@ -1273,7 +1258,7 @@
                                     </connections>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="rankingCell" rowHeight="46" id="gNM-5e-fW7" customClass="RankingCell" customModule="TafeltennisApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="rankingCell" rowHeight="46" id="gNM-5e-fW7" customClass="RankingCell" customModule="TafeltennisApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="84" width="414" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gNM-5e-fW7" id="kvr-7A-bR6">
@@ -1303,13 +1288,13 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bVK-kd-fZO">
                                                             <rect key="frame" x="193.33333333333337" y="2" width="190.66666666666663" height="20.333333333333332"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyt-bL-NMq">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyt-bL-NMq">
                                                                     <rect key="frame" x="0.0" y="0.0" width="134" height="20.333333333333332"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ub-S1-dVs">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ub-S1-dVs">
                                                                     <rect key="frame" x="148.99999999999997" y="0.0" width="41.666666666666657" height="20.333333333333332"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
@@ -1350,13 +1335,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DW4-3r-TME"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Ranking" id="b36-BK-OSa">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="rgY-Sd-hgi">
-                            <connections>
-                                <action selector="refreshData" destination="Kcb-ZH-nSx" id="Gmc-u6-0UN"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Ranking" id="b36-BK-OSa"/>
                     <connections>
                         <outlet property="rankingTable" destination="QfN-V7-4aY" id="pIQ-Hd-P7r"/>
                         <outlet property="searchBar" destination="FRf-U6-Zip" id="EJ4-Q2-LPH"/>
