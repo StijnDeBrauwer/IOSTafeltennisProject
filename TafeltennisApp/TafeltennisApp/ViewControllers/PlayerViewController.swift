@@ -33,8 +33,7 @@ class PlayerViewController: UIViewController {
             if let series = $0 {
                 self.series = series
                 self.series.forEach{serie in serie.players.forEach{player in self.players.append(player)}}
-                self.currentIndexSerie = 0
-                self.currentPlayers = self.series[0].players
+                self.currentPlayers = self.series[self.currentIndexSerie].players
                 self.tableView.reloadData()
             }
         }

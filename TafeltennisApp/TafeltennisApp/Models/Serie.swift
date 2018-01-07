@@ -20,15 +20,15 @@ class Serie: Codable {
     func changeWinnerMatch(oldMatch: Match, newMatch: Match){
         if(oldMatch.getWinner() != newMatch.getWinner()) {
             
-            let playerA = oldMatch.getWinner()
-            let playerB = newMatch.getWinner()
-            
-            playerA.rankingScore-=1
-            playerB.rankingScore+=1
-            
-            players[players.index(of: playerA)!].rankingScore = playerA.rankingScore
-           players[players.index(of: playerB)!].rankingScore = playerB.rankingScore
-            
+            let newMatchWinner = newMatch.getWinner()
+            var matchLoser: Player
+            if(newMatch.playerA == newMatchWinner){
+                matchLoser = newMatch.playerB
+            } else {
+               matchLoser = newMatch.playerB
+            }
+            players[players.index(of: newMatchWinner)!].rankingScore+=1
+            players[players.index(of: matchLoser)!].rankingScore-=1
             
         }
     }

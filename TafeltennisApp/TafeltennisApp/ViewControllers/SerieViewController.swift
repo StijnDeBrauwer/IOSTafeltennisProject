@@ -26,14 +26,6 @@ class SerieViewController: UIViewController {
         }
     }
     
-    @IBAction func refreshData() {
-        KituraService.shared.getSeries {
-            if let series = $0 {
-                self.series = series
-                self.tableView.reloadData()
-            }
-        }
-    }
     func showAlert(title: String, message: String){
         let alert = UIAlertController(title: title , message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))

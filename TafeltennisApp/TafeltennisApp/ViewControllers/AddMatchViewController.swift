@@ -33,15 +33,29 @@ override func viewDidLoad() {
         
         let playerAIndex: Int = serie!.getRankingPlayer(selectedPlayer: match.playerA) - 1
         let playerBIndex: Int =  serie!.getRankingPlayer(selectedPlayer: match.playerB) - 1
-        playerAPicker.selectRow(playerAIndex, inComponent: 0, animated: false)
-       playerBPicker.selectRow(playerBIndex, inComponent: 0, animated: false)
+            playerAPicker.selectRow(playerAIndex, inComponent: 0, animated: false)
+            playerBPicker.selectRow(playerBIndex, inComponent: 0, animated: false)
             setsPlayerA.text = "\(match.setsPlayerA)"
             setsPlayerB.text = "\(match.setsPlayerB)"
 
-          oldMatch = match
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let matchDate = match.date
+        let newDate = dateFormatter.date(from: match.date)
+        datePicker.date = newDate!
+        
+
+        
+        
+        oldMatch = Match(playerA: serie!.players[playerAIndex], playerB: serie!.players[playerBIndex], setsPlayerA: Int(setsPlayerA.text!)!, setsPlayerB: Int(setsPlayerB.text!)!, date: matchDate)
         }
     
     
+    }
+    
+    @IBAction func moveFocus() {
+        setsPlayerA.resignFirstResponder()
+        setsPlayerB.becomeFirstResponder()
     }
     
     @IBAction func save() {
@@ -146,7 +160,9 @@ extension AddMatchViewController: UITextFieldDelegate {
         return allowedCharacters.isSuperset(of: characterSet)
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.endEditing(true)
+        if textField == self.setsPlayerB {
+             textField.endEditing(true)
+        }
         return true
     }
 }

@@ -35,7 +35,7 @@ class AddPlayerViewController: UITableViewController {
         
         if let player = player  {
             //make oldPlayer
-            let sex = Player.Sex.values[sexPicker.selectedRow(inComponent: 0)]
+            //let sex = Player.Sex.values[sexPicker.selectedRow(inComponent: 0)]
             
             title = "\(player.firstname) \(player.lastname)"
             firstnameTextField.text = player.firstname
@@ -43,8 +43,12 @@ class AddPlayerViewController: UITableViewController {
             countrynameTextField.text = player.country
             debutYear.text = "\(player.debutYear)"
             
+            let sexIndex = Player.Sex.values.index(of: player.sex)!
+            sexPicker.selectRow(sexIndex, inComponent: 0, animated: false)
+            
             sexPicker.isUserInteractionEnabled = false
             
+            let sex = Player.Sex.values[sexPicker.selectedRow(inComponent: 0)]
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MM/yyyy"
@@ -53,7 +57,7 @@ class AddPlayerViewController: UITableViewController {
             
             let date = convertDateToString(date: datePicker.date)
             
-            oldPlayer = Player(sex: sex, firstname: firstnameTextField.text!, lastname: lastnameTextField.text!, country: countrynameTextField.text!, birthdate: date , debutYear: Int(debutYear.text!)!, rankingScore: player.rankingScore)
+            oldPlayer = Player(sex: sex , firstname: firstnameTextField.text!, lastname: lastnameTextField.text!, country: countrynameTextField.text!, birthdate: date , debutYear: Int(debutYear.text!)!, rankingScore: player.rankingScore)
           
         }
     }
