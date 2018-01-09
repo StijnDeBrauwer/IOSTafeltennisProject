@@ -9,7 +9,7 @@ class Serie: Codable {
     }
     
     func matchesOfPlayer(player: Player) -> [Match] {
-        let result: [Match] = matches.filter{ $0.playerA == player || $0.playerB == player}
+        let result: [Match] = matches.filter{( $0.playerA.lastname == player.lastname && $0.playerA.firstname == player.firstname) || ($0.playerB.lastname == player.lastname && $0.playerB.firstname == player.firstname)}
         return result
     }
     
@@ -35,9 +35,9 @@ class Serie: Codable {
     //Bij het wijzigen van een speler zal de matchen van deze speler ook veranderen
     func changeMatchesWithNewPlayer(oldplayer: Player, newplayer: Player){
     matches.forEach {
-            if($0.playerA == oldplayer){
+            if($0.playerA.lastname == oldplayer.lastname && $0.playerA.firstname == oldplayer.firstname){
                 $0.playerA = newplayer
-            }else if ($0.playerB == oldplayer){
+            }else if ($0.playerB.lastname == oldplayer.lastname && $0.playerB.firstname == oldplayer.firstname){
                 $0.playerB = newplayer
             }
             
@@ -46,17 +46,23 @@ class Serie: Codable {
     
     // set ranking score back of winner in case the match was deleted
     func setRankingScoreBack(deletedPlayer: Player) {
-        let oldmatches = matches.filter({$0.playerA == deletedPlayer || $0.playerB == deletedPlayer})
-        
-        oldmatches.forEach({if($0.getWinner() != deletedPlayer){
-            let otherPlayer = $0.playerA == deletedPlayer ? $0.playerB : $0.playerA
-            let index = players.index(of: otherPlayer)
-            if(players[index!].rankingScore > 0){
-                players[index!].rankingScore-=1
+        let oldmatches = matches.filter({($0.playerA.lastname == deletedPlayer.lastname && $0.playerA.firstname == deletedPlayer.firstname) || ($0.playerB.lastname == deletedPlayer.lastname && $0.playerB.firstname == deletedPlayer.firstname) })
+
+        oldmatches.forEach({
+            if(($0.getWinner() != deletedPlayer)){
+                let otherPlayer = $0.playerA == deletedPlayer ? $0.playerB : $0.playerA
+                let index = getRankingPlayer(selectedPlayer: otherPlayer) - 1
+                
+                if(index > 0){
+                    if(players[index].rankingScore > 0){
+                        players[index].rankingScore-=1
+                    }
                 }
-            }
+                }
+        
             
         })
+     
     }
     
     //get the ranking of a player to display (starts from 1)

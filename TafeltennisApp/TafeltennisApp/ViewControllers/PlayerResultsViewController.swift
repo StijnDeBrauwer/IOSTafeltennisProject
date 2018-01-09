@@ -12,7 +12,7 @@ class PlayerResultsViewController: UIViewController, ChartViewDelegate  /* UINav
     
     var player: Player?
 
-    
+    var currentScore = 0
    /* func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
@@ -34,15 +34,15 @@ class PlayerResultsViewController: UIViewController, ChartViewDelegate  /* UINav
         //een index:win of verlies
         //var entries: [Int:Int] = [0:0]
         var dataset: [ChartDataEntry] = []
-        let matchesPlayed =  serie!.matches.filter({$0.playerA == player || $0.playerB == player})
+        let matchesPlayed =  serie!.matchesOfPlayer(player: player!)
         let datums = matchesPlayed.map{
             String($0.date.prefix(5))
             
             
         }
-        var currentScore = 0
         let scores: [Int] = matchesPlayed.map {match -> Int in
-             if(match.getWinner() == player){
+            let winner = match.getWinner()
+             if(winner.firstname == player!.firstname  && winner.lastname == player!.lastname){
                  currentScore+=1
              }
             return currentScore

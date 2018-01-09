@@ -3,7 +3,8 @@ import UIKit
 class AddPlayerViewController: UITableViewController {
     var player: Player?
     var oldPlayer: Player?
-    
+    var series: [Serie]?
+    var currentIndexSerie: Int = 0
     @IBOutlet weak var firstnameTextField: UITextField!
     @IBOutlet weak var lastnameTextField: UITextField!
     @IBOutlet weak var countrynameTextField: UITextField!
@@ -19,6 +20,12 @@ class AddPlayerViewController: UITableViewController {
     
     override func viewDidLoad() {
       
+        KituraService.shared.getSeries {
+            if let series = $0 {
+                self.series = series
+                self.currentIndexSerie = 0
+            }
+        }
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/YYYY"
@@ -30,12 +37,13 @@ class AddPlayerViewController: UITableViewController {
         datePicker.maximumDate = Date()
         datePicker.date = defaultDate!
         datePicker.minimumDate = minDate
+    
         
         
-        
-        if let player = player  {
+        if let player = player {
             //make oldPlayer
             //let sex = Player.Sex.values[sexPicker.selectedRow(inComponent: 0)]
+            
             
             title = "\(player.firstname) \(player.lastname)"
             firstnameTextField.text = player.firstname
@@ -101,19 +109,44 @@ class AddPlayerViewController: UITableViewController {
         let birthyear = Int(dateFormatter.string(from:datePicker.date))
         let currentyear = Int(dateFormatter.string(from: Date()))
         
+         let sex = Player.Sex.values[sexPicker.selectedRow(inComponent: 0)]
+        
+        switch(determineSex(sex: sex)) {
+            case 0: currentIndexSerie = 0
+            case 1: currentIndexSerie = 1
+            case 2: currentIndexSerie = 2
+            case 3: currentIndexSerie = 3
+            default: fatalError()
+        }
+        
+    
+        
         if(firstnameTextField.text!.isEmpty || lastnameTextField.text!.isEmpty || countrynameTextField.text!.isEmpty || debutYear.text!.isEmpty ) {
             showAlert(title: "Please fill in all fields", message: "Please fill all textfields ")
         } else if (birthyear! > Int(debutYear.text!)!){
             showAlert(title: "Invalid date", message: "Please choose a valid date, debut year cannot be greater than date of birth")
         } else if(Int(debutYear.text!)! > currentyear!) {
             showAlert(title: "Invalid debut year", message: "The debut year cannot be greater than this year")
+        } else if (self.series![currentIndexSerie].playerAlreadyExists(firstname: firstnameTextField.text!, lastname: lastnameTextField.text!)) {
+            showAlert(title: "Player already exists", message: "Player was not added because a player with this name already exists")
         }
             else {
-            if player != nil {
-                performSegue(withIdentifier: "didEditPlayer", sender: self)
-            } else {
-                performSegue(withIdentifier: "didAddPlayer", sender: self)
+                if player != nil {
+                    performSegue(withIdentifier: "didEditPlayer", sender: self)
+                } else {
+                    performSegue(withIdentifier: "didAddPlayer", sender: self)
+                }
             }
+    
+        
+    }
+    
+    func determineSex(sex: Player.Sex) -> Int {
+        switch sex {
+        case Player.Sex.man: return 0
+        case .woman: return 1
+        case .boy: return 2
+        case .girl: return 3
         }
     }
     

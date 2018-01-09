@@ -8,8 +8,7 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var addButton: UIBarButtonItem!
     
     var series: [Serie] = []
-    
-     var players: [Player] = []
+
 
     private var currentPlayers: [Player] = []
     private var currentIndexSerie: Int = 0
@@ -20,9 +19,8 @@ class PlayerViewController: UIViewController {
         KituraService.shared.getSeries {
             if let series = $0 {
                 self.series = series
-                self.series.forEach{serie in serie.players.forEach{player in self.players.append(player)}}
                 self.currentIndexSerie = 0
-                self.currentPlayers = self.series[0].players
+                self.currentPlayers = self.series[self.currentIndexSerie].players
                 self.tableView.reloadData()
             }
         }
@@ -32,7 +30,6 @@ class PlayerViewController: UIViewController {
         KituraService.shared.getSeries {
             if let series = $0 {
                 self.series = series
-                self.series.forEach{serie in serie.players.forEach{player in self.players.append(player)}}
                 self.currentPlayers = self.series[self.currentIndexSerie].players
                 self.tableView.reloadData()
             }
@@ -79,6 +76,7 @@ class PlayerViewController: UIViewController {
         case "editPlayer"?:
             let addPlayerViewController = segue.destination as! AddPlayerViewController
             addPlayerViewController.player = currentPlayers[indexPathToEdit.row]
+            addPlayerViewController.series = self.series
         case "showPlayerDetail"?:
             let playerDetailViewController = segue.destination as! PlayerDetailViewController
             let selection = tableView.indexPathForSelectedRow!
@@ -103,19 +101,15 @@ class PlayerViewController: UIViewController {
             let addPlayerViewController = segue.source as! AddPlayerViewController
             let player = addPlayerViewController.player!
             let i = determineSerie(sex: player.sex)
-            
-            if(!(series[i].playerAlreadyExists(firstname: player.firstname, lastname: player.lastname))){
+        
                 //add the player and set it's ranking
                 currentPlayers.append(addPlayerViewController.player!)
-                players.append(addPlayerViewController.player!)
                 series[i].players.append(player)
                 series[i].orderRanking()
                 
                 tableView.insertRows(at: [IndexPath(row: currentPlayers.count - 1, section: 0)], with: .automatic)
                 KituraService.shared.updateSerie(withName: series[i].name, to: series[i])
-            } else {
-                showAlert(title: "Player already exists", message: "Player was not added because a player with this name already exists")
-            }
+           
            
         case "didEditPlayer"?:
             let addPlayerViewController = segue.source as! AddPlayerViewController
@@ -163,7 +157,7 @@ extension PlayerViewController: UITableViewDelegate {
             self.series[self.currentIndexSerie].setRankingScoreBack(deletedPlayer: deletedPlayer)
             
             //delete every match from the deletedplayer
-            let newMatches = self.series[self.currentIndexSerie].matches.filter({$0.playerA != deletedPlayer && $0.playerB != deletedPlayer})
+            let newMatches = self.series[self.currentIndexSerie].matches.filter({($0.playerA.lastname != deletedPlayer.lastname && $0.playerA.firstname != deletedPlayer.firstname) && ($0.playerB.lastname != deletedPlayer.lastname && $0.playerB.firstname != deletedPlayer.firstname) })
             
              self.series[self.currentIndexSerie].matches = newMatches
             
@@ -204,29 +198,26 @@ extension PlayerViewController: UITableViewDataSource {
 extension PlayerViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard !searchText.isEmpty else {
-            currentPlayers = players
+            currentPlayers = series[currentIndexSerie].players
             tableView.reloadData()
             return
         }
-        currentPlayers = players.filter({player -> Bool in
+        currentPlayers = series[currentIndexSerie].players.filter({player -> Bool in
            player.firstname.lowercased().contains(searchText.lowercased()) || player.lastname.lowercased().contains(searchText.lowercased())
         })
         tableView.reloadData()
     }
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        players = []
-         series.forEach{serie in serie.players.forEach{player in players.append(player)}}
         switch selectedScope {
          case 0:
             currentIndexSerie = 0
-           
          case 1:
             currentIndexSerie = 1
          case 2:
             currentIndexSerie = 2
          case 3:
             currentIndexSerie = 3
-         default: currentPlayers = players
+         default: fatalError()
         }
          currentPlayers = series[currentIndexSerie].players
         tableView.reloadData()

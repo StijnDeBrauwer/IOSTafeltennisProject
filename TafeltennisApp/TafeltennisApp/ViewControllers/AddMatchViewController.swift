@@ -71,9 +71,11 @@ override func viewDidLoad() {
             let playerA = playersSerie[playerAPicker.selectedRow(inComponent: 0)]
             let playerB = playersSerie[playerBPicker.selectedRow(inComponent: 0)]
         
-            
+      
             match = Match(playerA: playerA, playerB: playerB, setsPlayerA: Int(setsPlayerA.text!)!, setsPlayerB: Int(setsPlayerB.text!)!, date: date)
-
+        
+            
+            
         case "didEditMatch"?:
          
             if let match = match{
